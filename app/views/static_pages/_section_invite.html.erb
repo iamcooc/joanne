@@ -31,7 +31,7 @@
       </div>
 
       <div class="col-xs-12 form-group">
-        <%= fa_icon "phone" %>&nbsp;<%= f.label :phone, "聯絡電話 Mobile Phone (Cell Phone)", :class => "control-label " %>
+        <%= fa_icon "phone" %>&nbsp;<%= f.label :phone, "聯絡電話 Mobile Phone", :class => "control-label " %>
         <%= f.text_field :phone, :class => "form-control" %>
       </div>
 
@@ -56,13 +56,13 @@
       </div>
 
       <div class="col-xs-12 form-group">
-        <%= fa_icon "group" %>&nbsp;<%= f.label :company, "出席人數 attending  ", :class => "control-label " %>
+        <%= fa_icon "group" %>&nbsp;<%= f.label :company, "出席人數 Attending  ", :class => "control-label " %>
         <%= f.number_field :company,  :class => "form-control", :style => "width:50%;", :min => "0", :max => "5", :value =>"1" %>
       </div>
 
       <div class="col-xs-12 form-group">
         
-        <%= fa_icon "tag" %>&nbsp;<%= f.label :location, "場次 session", :class => "control-label " %>
+        <%= fa_icon "tag" %>&nbsp;<%= f.label :location, "場次 Session", :class => "control-label " %>
           <%#= f.text_field :location, :style => "width:80%;", :class => "form-control" %>
         <input type="hidden" name="invite[location]" value="" id="invite_location">
 
@@ -79,7 +79,7 @@
       </div>
 
       <div class="col-xs-12 form-group">
-        <%= fa_icon "cutlery" %>&nbsp;<%= f.label :isVeg, "素食",:class => "control-label " %>
+        <%= fa_icon "cutlery" %>&nbsp;<%= f.label :isVeg, "素食 Vegetarian",:class => "control-label " %>
         <%= f.check_box :isVeg, :class => "form-control" %> 
       </div>
 
@@ -100,7 +100,8 @@
         </li>
         <li class="list-group-item">
           <input type="radio"class="col-xs-1" name="invite[category]" value="2">參加，一定會排除萬難前往祝福，但為了環保，不需要寄喜帖給我<br>
-          <span class="col-xs-1"></span>Yes, I’m delighted to attend, but to protect the environment I won't require a printed invitation.
+          <span class="col-xs-1"></span>Yes, I’m delighted to attend, but to protect the environment<br> 
+          <span class="col-xs-1"></span>I won't require a printed invitation.
         </li>
         <li class="list-group-item">
           <input type="radio"class="col-xs-1" name="invite[category]" value="3">無法參加，有要事在身非常抱歉，但我一樣想要喜帖且祝福你們唷! <br>
@@ -108,7 +109,8 @@
         </li>
         <li class="list-group-item">
           <input type="radio"class="col-xs-1" name="invite[category]" value="4">無法參加，有要事在身非常抱歉，但為了環保不需要寄喜帖給我，真心祝福你們 <br>
-          <span class="col-xs-1"></span>Regretfully I cannot join you; to protect the environment I won't require a printed invitation.
+          <span class="col-xs-1"></span>Regretfully I cannot join you; to protect the environment<br>
+          <span class="col-xs-1"></span> I won't require a printed invitation.
         </li>
         
       </ul>
