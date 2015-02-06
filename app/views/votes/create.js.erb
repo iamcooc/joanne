@@ -1,0 +1,11 @@
+if (<%= @message.present? %>){
+	sweetAlert("<%= raw @message %>");
+
+} else {
+	sweetAlert("Thank you for the vote!");
+}
+
+//alert('Thank You');
+$('#count_nicks').html("<%= @nicks %>");
+$('#count_maggies').html("<%= @maggies %>");
+

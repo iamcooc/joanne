@@ -1,0 +1,101 @@
+<% content_for :for_head do %>
+ 	<meta property="og:image" content="http://www.nicknmaggie.us/<%= asset_path('1046274861_x.jpg') %>"/>
+ 	<meta property="og:title" content="Nick VS Maggie" />
+ 	<meta property="og:url" content="http://www.nicknmaggie.us/votes/new" />
+ 	<meta property="og:description" content=" Please vote who is the better director, Nick or Maggie?" />
+  	<meta property="og:type" content="website" />
+  
+<% end %>
+
+
+<div class="container ">
+	<div class="votes_section">
+		<h2>請問您覺得兩部影片哪個比較好？？</h2>
+		<hr>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h4> Nick :&nbsp; <span class="dark-red"><i class="fa fa-quote-left"></i>&nbsp;投給 Maggie 就是支持馬英九 !&nbsp;<i class="fa fa-quote-right "></i></span></h4>
+				<div class="bs-example bs-example-nick">
+		    		<div class="embed-responsive embed-responsive-16by9">
+		      			<iframe class="embed-responsive-item" src="//www.youtube.com/embed/81jgEYyt7r8" allowfullscreen=""></iframe>
+		    		</div>
+
+		    		<br><br>
+		    		<div class="row">
+		    			<div class="text-center">
+		    				<button id="nick_btn" class="btn btn-success"><i class="fa fa-angellist"></i>&nbsp; Vote </button>
+		    			</div>
+
+		    		</div>
+		    		<div class="row">
+		    			<div class="pull-right">
+		    				<b>count : <span id="count_nicks" class="text-danger"><%= @nicks %></span></b>&nbsp;&nbsp;&nbsp;
+		    			</div>
+		    		</div>
+
+	  			</div>
+
+			</div>
+			<div class="col-md-6">
+				<h4> Maggie :&nbsp; <span class="dark-red"><i class="fa fa-quote-left"></i>&nbsp;不要讓彥如不開心 !&nbsp;<i class="fa fa-quote-right "></i></span> </h4>
+				<div class="bs-example bs-example-maggie">
+		    		<div class="embed-responsive embed-responsive-16by9">
+		      			<iframe class="embed-responsive-item" src="//www.youtube.com/embed/wrfzIg-sLfw" allowfullscreen=""></iframe>
+		    		</div>
+
+		    		<br><br>
+		    		<div class="row">
+		    			<div class="text-center">
+		    				<button id="maggie_btn" class="btn btn-success"><i class="fa fa-angellist"></i>&nbsp; Vote </button>
+		    			</div>
+
+		    		</div>
+		    		<div class="row">
+		    			<div class="pull-right">
+		    				<b>count :<span id="count_maggies" class="text-danger"> <%= @maggies %></span></b>&nbsp;&nbsp;&nbsp;
+		    			</div>
+		    		</div>
+		    		
+		    		
+		    		
+	  			</div>
+
+			</div>
+
+		</div>
+
+		<br>
+		  <div 
+		    style="margin-top:20px;"
+		    class="fb-like"
+		    data-share="true"
+		    data-width="450"
+		    data-show-faces="true">
+		  </div>
+	</div>
+</div>	
+
+
+<%= form_for(@vote, :html => { remote: true} ) do |f| %>
+	<input type="hidden" name="vote[candidate]" id="candidate" value="">
+<% end %>  
+
+
+<script type="text/javascript">
+	$('#nick_btn').click(function(e){
+    	e.preventDefault();
+    	$('#candidate').val(1);
+	    $('#new_vote').submit();
+	   
+  	});
+
+  	$('#maggie_btn').click(function(e){
+    	e.preventDefault();
+    	$('#candidate').val(2) ;
+	    $('#new_vote').submit();
+	   
+  	});
+
+
+</script>

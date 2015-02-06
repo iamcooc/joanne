@@ -1,0 +1,16 @@
+
+
+
+swal("Thank You! <%= @comment.name %> ", "Your message has been created successfully!", "success");
+if ( <%= @comment.subject %> == 0){
+	$('#comments_area').prepend("<%= escape_javascript(render 'static_pages/message', :comment => @comment, :index => 1)  %>" );
+
+}
+
+<%#= render 'static_pages/message', :comment => @comment, :index => 1 %>
+//simple_format 
+
+$('#comment_name').val('');
+$('#comment_message').val('');
+window.location.hash = '#board';
+

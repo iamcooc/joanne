@@ -1,0 +1,21 @@
+if ( <%= @invite.errors.present? %>) {
+	$('#invite_email').parent().addClass('has-error');
+	$('#invite_email').focus();
+		
+} else {
+	$('#invite_email').parent().removeClass('has-error');
+
+	swal("Thank You! <%= @invite.name %> ", "Just can't wait to celebrate with all my dear family and friends. Thank you for all your love and support! ", "success");
+
+	<%#= render 'static_pages/message', :comment => @comment, :index => 1 %>
+	//simple_format 
+
+	$('#invite_name').val('');
+	$('#invite_email').val('');
+	$('#invite_phone').val('');
+	$('#invite_address').val('');
+	$('#invite_company').val(1);
+
+	$('#invite_isVeg').attr('checked', false);
+
+}

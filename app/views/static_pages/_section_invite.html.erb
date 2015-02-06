@@ -1,0 +1,205 @@
+<a name="invite"></a>
+<div class="title text-center" id="invite">
+  <%= image_tag("elephant.png", :alt => "rss feed", :class => "img-circle img-responsive img-center" , :width => "200") %><h1> 出席宴會 RSVP</h1>
+</div>
+
+
+
+<section class="content-section">
+  <div class="container">
+  <%= form_for(Invite.new, :html => {:class => "form-horizontal", remote: true} ) do |f| %>
+  
+  <%# if @invite.errors.any? %>
+    <!--
+    <div id="error_explanation">
+      <h2><%#= pluralize(@invite.errors.count, "error") %> prohibited this invite from being saved:</h2>
+
+      <ul>
+      <%# @invite.errors.full_messages.each do |message| %>
+        <li><%#= message %></li>
+      <%# end %>
+      </ul>
+    </div>
+    -->
+  <%# end %>
+
+
+    <div class="row col-lg-6 col-lg-offset-3">
+      <div class="col-xs-12 form-group">
+        <%= fa_icon "user" %> &nbsp;<%= f.label :name,  "姓名 Name ", :class => "control-label " %>
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+
+      <div class="col-xs-12 form-group">
+        <%= fa_icon "phone" %>&nbsp;<%= f.label :phone, "聯絡電話 Mobile Phone (Cell Phone)", :class => "control-label " %>
+        <%= f.text_field :phone, :class => "form-control" %>
+      </div>
+
+      <div class="col-xs-12 form-group">
+        <%= fa_icon "envelope-o" %>&nbsp;<%= f.label :email, "Email", :class => "control-label" %>
+        <%= f.text_field :email, :class => "form-control" %>
+      </div>
+
+      
+     
+      <div class="col-xs-12 form-group">
+        <%= fa_icon "send-o" %>&nbsp;<%= f.label :address, "聯絡地址 Address ", :class => "control-label " %>
+        <div class="row">
+           <div class="col-xs-2" style="padding-right: 0px; margin-right: 0px;">
+          <%= f.text_field :zipcode, :class => "form-control ", :placeholder => "郵遞區號",:style => "padding-right: 0px;" %>
+        </div>
+        <div class="col-xs-10" style="padding-left: 5px; ">
+          <%= f.text_field :address, :class => "form-control", :style => "padding-left: 5px; margin-left: 15px;" %>
+        </div>
+        </div>
+       
+      </div>
+
+      <div class="col-xs-12 form-group">
+        <%= fa_icon "group" %>&nbsp;<%= f.label :company, "出席人數 attending  ", :class => "control-label " %>
+        <%= f.number_field :company,  :class => "form-control", :style => "width:50%;", :min => "0", :max => "5", :value =>"1" %>
+      </div>
+
+      <div class="col-xs-12 form-group">
+        
+        <%= fa_icon "tag" %>&nbsp;<%= f.label :location, "場次 session", :class => "control-label " %>
+          <%#= f.text_field :location, :style => "width:80%;", :class => "form-control" %>
+        <input type="hidden" name="invite[location]" value="" id="invite_location">
+
+        <div class="btn-group form-control no-border" data-toggle="buttons">
+          <label class="btn btn-warning" id="option1">
+            <input type="radio" name="options" > Yi lan | Engagement  
+          </label>
+          <label class="btn btn-warning" id="option2">
+            <input type="radio" name="options"> Kaohsiung | Wedding
+          </label>
+        </div>
+
+       
+      </div>
+
+      <div class="col-xs-12 form-group">
+        <%= fa_icon "cutlery" %>&nbsp;<%= f.label :isVeg, "素食",:class => "control-label " %>
+        <%= f.check_box :isVeg, :class => "form-control" %> 
+      </div>
+
+
+
+      
+
+    </div>    
+
+    
+
+
+    <div class="row col-lg-6 col-lg-offset-3 col-xs-12" style="margin-top:50px;">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <input type="radio"class="col-xs-1" name="invite[category]" value="1">參加，一定會排除萬難前往祝福，請寄喜帖給我唷!<br>
+          <span class="col-xs-1"></span>Yes, I’m delighted to attend, please send me the invitation.
+        </li>
+        <li class="list-group-item">
+          <input type="radio"class="col-xs-1" name="invite[category]" value="2">參加，一定會排除萬難前往祝福，但為了環保，不需要寄喜帖給我<br>
+          <span class="col-xs-1"></span>Yes, I’m delighted to attend, but to protect the environment I won't require a printed invitation.
+        </li>
+        <li class="list-group-item">
+          <input type="radio"class="col-xs-1" name="invite[category]" value="3">無法參加，有要事在身非常抱歉，但我一樣想要喜帖且祝福你們唷! <br>
+          <span class="col-xs-1"></span>Regretfully I cannot join you, but please send me the invitation.
+        </li>
+        <li class="list-group-item">
+          <input type="radio"class="col-xs-1" name="invite[category]" value="4">無法參加，有要事在身非常抱歉，但為了環保不需要寄喜帖給我，真心祝福你們 <br>
+          <span class="col-xs-1"></span>Regretfully I cannot join you; to protect the environment I won't require a printed invitation.
+        </li>
+        
+      </ul>
+    </div>
+
+
+    
+
+    <div class="row col-lg-6 col-lg-offset-3 col-xs-12">
+      
+      <hr>
+      <div class="row" >
+        <div class="col-xs-12 text-center" style="margin-top:40px;">
+          <%#= f.submit " 好了！我可以送出資料", :class => "btn-primary btn btn-lg" %>
+          <button class="btn-primary btn btn-lg" type="button" id="submit_btn">填好了~~送出!  Summit  </button>
+        </div>
+      </div> 
+    </div>
+
+
+  <% end %>
+  </div>
+</section>
+
+
+<script type="text/javascript">
+  $(document).ready(function (){ 
+    $('#option1').click(function() {
+      
+      $('#invite_location').val('0'); // yi len
+      //alert($('#invite_location').val());
+    });
+    $('#option2').click(function() {
+      $('#invite_location').val('1'); //kao
+      //alert($('#invite_location').val());
+    });
+  });
+
+  $('#submit_btn').click(function(e){
+    e.preventDefault();
+    if (validation_invite()){
+      $('#new_invite').submit();
+    }
+  });
+
+  function validation_invite(){
+
+
+    if ($('#invite_name').val() == "") {
+      $('#invite_name').parent().addClass('has-error');
+      $('#invite_name').focus();
+      return false;
+    }else {
+      $('#invite_name').parent().removeClass('has-error');
+    }
+
+    if ($('#invite_phone').val() == "") {
+      $('#invite_phone').parent().addClass('has-error');
+      $('#invite_phone').focus();
+      return false;
+    }else {
+      $('#invite_phone').parent().removeClass('has-error');
+    }
+
+    if ($('#invite_address').val() == "") {
+      $('#invite_address').parent().addClass('has-error');
+      $('#invite_address').focus();
+      return false;
+    }else {
+      $('#invite_address').parent().removeClass('has-error');
+    }  
+
+    if ($('#invite_location').val() == "") {
+      $('#invite_location').parent().addClass('has-error');
+      $('#invite_location').focus();
+      return false;
+    }else {
+      $('#invite_location').parent().removeClass('has-error');
+    }   
+
+    if ($('#invite_location').val() == "") {
+      $('#invite_location').parent().addClass('has-error');
+      $('#invite_location').focus();
+      return false;
+    }else {
+      $('#invite_location').parent().removeClass('has-error');
+    }            
+
+    return true;
+  }
+
+
+
+</script>

@@ -1,0 +1,141 @@
+<script>
+  function initialize() {
+    var Latlng_1 = new google.maps.LatLng(24.595953,121.856056);
+    var Latlng_2 = new google.maps.LatLng(22.6114003,120.3005307);
+    var map_1_Options = {
+      zoom: 16,
+      center: Latlng_1
+    }
+    var map_2_Options = {
+      zoom: 16,
+      center: Latlng_2
+
+    }
+    var map_1 = new google.maps.Map(document.getElementById('map_1'), map_1_Options);
+    var map_2 = new google.maps.Map(document.getElementById('map_2'), map_2_Options);
+
+    var marker_1 = new google.maps.Marker({
+        position: Latlng_1,
+        map: map_1,
+        title: 'here!'
+    });
+    var marker_2 = new google.maps.Marker({
+        position: Latlng_2,
+        map: map_2,
+        title: 'here!',
+        icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+
+/*
+  function loadScript() {
+	  var script = document.createElement('script');
+	  script.type = 'text/javascript';
+	  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+	      'callback=initialize';
+	  document.body.appendChild(script);
+	}    
+
+	window.onload = loadScript;
+*/
+</script> 
+
+<a name="location"></a>
+<div class="title text-center" id="location">
+  <%= image_tag("bear.png", :alt => "rss feed", :class => "img-circle img-responsive img-center" , :width => "200") %><h1> 宴會資訊 WHEN/WHERE/HOW</h1>
+</div>
+
+<section class="content-section">
+	<div class="container">
+		
+		<ul class="nav nav-tabs">
+        	<li><a data-toggle="tab" href="#sectionA"><h4>宜蘭 文定宴</h4></a></li>
+        	<li class="active"><a data-toggle="tab" href="#sectionB"><h4>高雄 結婚宴</h4></a></li>
+		   
+		</ul>
+
+		<div class="tab-content">
+	        <div id="sectionA" class="tab-pane fade">
+	        	<div class="col-md-6">
+	        		<div id="map_1" class="map"></div>	
+	        	</div>
+	        	<div class="col-md-6">
+	        		<h3>May 2, 2015 宜蘭 文定宴  </h3>
+
+	        		<div style="display:table;">
+	        			<div class="table-row">
+	        				<div class="table-cell">
+	        					<%= fa_icon "cutlery" %> &nbsp;地點Location (Venue):  
+	        				</div>
+	        				<div class="table-cell">
+	        					食上鱻海鮮餐廳 | 宜蘭縣蘇澳鎮蘇東路5-5號 
+	        				</div>
+	        			</div>
+	        			<div class="table-row">
+	        				<div class="table-cell">
+	        					<%= fa_icon "camera-retro" %> &nbsp;時間time:
+	        				</div>
+	        				<div class="table-cell">
+	        					2015. 5. 2 (六) 12:00 
+	        				</div>
+	        			</div>
+	        			<div class="table-row">
+	        				<div class="table-cell">
+	        					<%= fa_icon "bus" %> &nbsp;交通transportation: 
+	        				</div>
+	        				<div class="table-cell">
+	        					至捷運南港展覽館Exit2 or 圓山捷運站Exit 1，搭乘國光客運至蘇澳站(倒數第二站，非終點站)，徒步至食上鱻海鮮餐廳約五分鐘 
+	        				</div>
+	        			</div>
+
+	        		</div>
+	        		
+	        	</div>
+	            
+	        </div>
+	        <div id="sectionB" class="tab-pane fade in active">
+	            <div class="col-md-6">
+	        		<div id="map_2" class="map"></div>	
+	        	</div>
+	        	<div class="col-md-6">
+	        		<h3>June 13,2015 高雄 結婚宴 </h3>
+	        		<div style="display:table;">
+	        			<div class="table-row">
+	        				<div class="table-cell">
+	        					<%= fa_icon "cutlery" %> &nbsp;地點Location (Venue): 
+	        				</div>
+	        				<div class="table-cell">
+	        					君鴻國際酒店85 SKY TOWER HOTEL | 高雄市苓雅區自強三路1號38樓 (珍鑽宴會廳)
+	        				</div>
+	        			</div>
+	        			<div class="table-row">
+	        				<div class="table-cell">
+	        					<%= fa_icon "clock-o" %> &nbsp;時間time:
+	        				</div>
+	        				<div class="table-cell">
+	        					2015. 6. 13 (六) 12:00 
+	        				</div>
+	        			</div>
+	        			<div class="table-row">
+	        				<div class="table-cell">
+								<%= fa_icon "bus" %> &nbsp;交通transportation:
+	        					
+	        				</div>
+	        				<div class="table-cell">
+	        					ASK Daniel 
+	        				</div>
+	        			</div>
+
+	        		</div>
+	        		
+	        	</div>
+	        </div>
+
+
+
+		</div>
+	</div>
+</section>		

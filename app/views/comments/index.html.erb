@@ -1,0 +1,34 @@
+<div style="padding-top:100px;"></div>
+<h1>Listing Comments</h1>
+
+<table class="table" >
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Time</th>
+      <th>Message</th>
+      <th>Subject</th>
+      <th>Ip</th>	
+      <th></th>	
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.name %></td>
+        <td><%= comment.updated_at.to_s(:short) %></td>
+        <td><%= simple_format(comment.message) %></td>
+        <td><%= render_subject comment.subject %></td>
+        <td><%= comment.ip %></td>
+        <!--
+        <td><%#= link_to 'Show', comment %></td>
+        <td><%#= link_to 'Edit', edit_comment_path(comment) %></td>
+        -->
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

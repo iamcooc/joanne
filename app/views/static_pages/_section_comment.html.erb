@@ -1,0 +1,175 @@
+<a name="comment"></a>
+<div class="title text-center" id="comment">
+  <div class="row">
+    <div class="col-xs-6">
+      <%= image_tag("girl.png", :alt => "rss feed", :class => "img-circle img-responsive pull-right" , :width => "200") %>
+    </div>
+    <div class="col-xs-6">
+       <%= image_tag("boy.png", :alt => "rss feed", :class => "img-circle img-responsive " , :width => "200") %>
+    </div>
+   
+  </div>
+  <h1> 祝福的話 WEDDING WISHES  </h1>
+</div>
+
+<section class="content-section">
+  <div class="container">
+    <%= form_for(Comment.new, :html => {:class => "form-horizontal"}, remote: true) do |f| %>
+      <div class="form-group">
+        <div class="col-xs-12 ">
+          <%= fa_icon "user" %> &nbsp;<%= f.label :name, "姓名", :class => "control-label  " %>
+        </div>
+     
+        <div class="col-xs-12 col-sm-4">
+          <%= f.text_field :name, :class => "form-control ", :id => "comment_name" %>
+        </div>
+      </div>   
+    
+
+
+
+      <div class="row">
+        
+        <!--<button type="button" class="btn btn-success active" id="public_btn">公開</button>&nbsp; 
+        -->
+        <div class="col-md-6">
+          <label class="control-label">留言給 &nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <div class="btn-group form-control no-border" data-toggle="buttons" style="padding-left:0px;">
+            <button class="btn btn-default" id="both_btn" >Daniel & Joanne</button> 
+            <a class="btn btn-warning" id="maggie_btn">Joanne</a>
+            <a class="btn btn-info"id="nick_btn">Daniel</a>
+          </div>  
+        </div>
+
+        <div class="col-md-6"> 
+
+          <label class="control-label">方式 &nbsp;(公開會發表在網站 私下留言就有 Joanne 或 Daniel 會看到)</label>
+
+          <div class="btn-group form-control no-border" data-toggle="buttons" style="padding-left:0px;">
+            <label id="public_label" class="btn btn-success active">
+              <input name="comment[subject]" type="radio" value="0" checked="checked" />
+              <span>公開</span>
+            </label>
+
+            <label id="private_label" class="btn btn-success ">
+              <input name="comment[subject]" type="radio" value="1"/>
+              <span>私下  </span>
+            </label>
+            
+          </div>
+        
+        
+
+
+        </div>
+
+      </div>  
+        
+      <br>
+      <!--
+      <textarea style="width=100%;" rows="10" class="form-control" name="comment[message]"></textarea>-->
+      <%= f.text_area :message, :value => "Hi, Joanne & Daniel\n", :rows => "10", :class => "form-control", :style => "width:100%;" %>
+      <br>
+
+  <!--
+      <a class="btn-link btn"><%#= fa_icon "trash" %> &nbsp;取消這則留言</a>
+
+      <div class="row" >
+        <div class="col-xs-12" style="margin-top:0px;">
+          <button class="btn btn-success center-block"><%#= fa_icon "pencil" %> &nbsp;新增一則祝福的話</button>
+        </div>
+      </div> 
+  -->
+
+
+      <div class="row" >
+        <div class="col-xs-12" style="margin-top:0px;">
+          <button type="button" id="comment_btn" class="btn btn-lg btn-primary center-block"><%= fa_icon "pencil" %> &nbsp;送出這則祝福的話</button>
+        </div>
+      </div> 
+    <% end %>  
+
+    <br>
+
+    <div class="title text-center" id="board">
+      <%= image_tag("comment.png", :alt => "rss feed", :class => "img-circle img-responsive img-center" , :width => "200") %><h1> 大家的祝福 </h1>
+    </div>
+
+
+    <div id="comments_area" class="bs-example-popover ">
+
+      <% @comments.each.with_index do |comment, index| %>
+
+        <%= render 'message' ,:comment => comment,:index => index %>
+      <% end %>    
+    </div>
+
+  </div>    
+</section>
+
+<script type="text/javascript">
+  //$('#public_btn').click(function(){
+  $( "#both_btn" ).on( "click", function(e) {  
+
+    $('#comment_message').val('Hi, Joanne & Daniel\n');
+    $('#comment_message').focus();
+    $('#both_btn').parent().addClass('active');
+
+    $('#nick_btn').removeClass('active');
+    $('#maggie_btn').removeClass('active');
+
+
+  });
+  $('#maggie_btn').click(function(){
+    $('#comment_message').val('Hi, Joanne\n');
+    $('#comment_message').focus();
+    $('#maggie_btn').parent().addClass('active');
+    $('#nick_btn').removeClass('active');
+    $('#both_btn').removeClass('active');
+  });
+
+  $('#nick_btn').click(function(){
+    $('#comment_message').val('Hi, Daniel\n');
+    $('#comment_message').focus();
+    $('#nick_btn').parent().addClass('active');
+    $('#maggie_btn').removeClass('active');
+    $('#both_btn').removeClass('active');
+  });
+
+
+  $( "#comment_btn" ).on( "click", function(e) { 
+    e.preventDefault();
+   
+    if (validation_comment()){
+      $('#new_comment').submit();
+    }
+  });
+
+  function validation_comment(){
+
+    if ($('#comment_name').val() == "") {
+      $('#comment_name').parent().addClass('has-error');
+      $('#comment_name').focus();
+      return false;
+    }else {
+      $('#comment_name').parent().removeClass('has-error');
+    }
+
+    if ($('#comment_message').val() == "") {
+      $('#comment_message').parent().addClass('has-error');
+      $('#comment_message').focus();
+      return false;
+    }else {
+      $('#comment_message').parent().removeClass('has-error');
+    }    
+
+    return true;
+  }
+
+
+
+</script>
+
+
+ 
+

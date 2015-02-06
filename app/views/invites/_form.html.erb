@@ -1,0 +1,92 @@
+<%= form_for(@invite, :html => {:class => "form-horizontal"} ) do |f| %>
+  <% if @invite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invite.errors.count, "error") %> prohibited this invite from being saved:</h2>
+
+      <ul>
+      <% @invite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row col-lg-6 col-lg-offset-3">
+    <div class="col-xs-12 form-group">
+      <%= f.label :name, "姓名", :class => "control-label " %>
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+
+    <div class="col-xs-12 form-group">
+      <%= f.label :email, "Email", :class => "control-label" %>`
+      <%= f.email_field :email, :class => "form-control" %>
+    </div>
+
+    <div class="col-xs-12 form-group">
+      <%= f.label :phone, "聯絡電話", :class => "control-label " %>
+      <%= f.text_field :phone, :class => "form-control" %>
+    </div>
+   
+    <div class="col-xs-12 form-group">
+      <%= f.label :address, "聯絡地址", :class => "control-label " %>
+      <%= f.text_field :address, :class => "form-control" %>
+    </div>
+
+
+  </div>    
+
+    
+  <div class="row col-lg-6 col-lg-offset-3 col-xs-12">
+    <div class="col-md-4 form-group">
+        <%= f.label :company, "攜伴人數", :class => "control-label " %>
+        <%= f.number_field :company,  :class => "form-control", :style => "width:50%;", :min => "0", :max => "5" %>
+    </div>
+
+    <div class="col-md-4 form-group col-xs-12">  
+        <%= f.label :location, "場次", :class => "control-label " %>
+        <%= f.text_field :location, :style => "width:80%;", :class => "form-control" %>
+    </div>
+
+    <div class="col-md-4 form-group col-xs-12">  
+        <%= f.label :isVeg, "素食",:class => "control-label " %>
+        <%= f.check_box :isVeg, :class => "form-control" %> 
+
+      
+    </div>
+
+  </div>
+
+  <div class="row col-lg-6 col-lg-offset-3 col-xs-12">
+    
+    <hr>
+
+    <p><b> 祝福的話 </b></p>
+    <div>
+      <div class="">
+        <a class="btn btn-success">公開</a>&nbsp;&nbsp;
+        <a class="btn btn-warning">Maggie</a>&nbsp;&nbsp;
+        <a class="btn btn-info">Nick</a>&nbsp;&nbsp;
+        <a class="btn btn-default">Nick & Maggie</a>
+       </div>
+    
+    
+      <br>
+      <textarea style="width=100%;" rows="10" class="form-control">
+        Hi, 
+      </textarea>
+      <br>
+    </div>  
+
+  </div> 
+ 
+
+<div class="row">
+  <div class="col-xs-12">
+  <%= f.submit "送出資料", :class => "btn-primary btn center-block" %>
+  </div>
+</div> 
+ 
+
+
+<% end %>

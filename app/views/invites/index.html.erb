@@ -1,0 +1,104 @@
+<div class="container">
+
+  <div style="padding-top:100px;"></div>
+  <h1><span class="text-info">Yi lan |</span> Listing invites</h1>
+
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Zipcode</th>
+        <th>Address</th>
+        <th>Attendance</th>
+        <th>Location</th>
+        <th>Isveg</th>
+        <th>Time</th>
+        <th> Category </th>
+        <!--<th>Ip</th>-->
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invites_yi_lan.each_with_index do |invite, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= invite.name %></td>
+          <td><%= invite.email %></td>
+          <td><%= invite.phone %></td>
+          <td><%= invite.zipcode %></td>
+          <td><%= invite.address %></td>
+          <td><%= invite.company %></td>
+          <td><%= render_location invite.location %></td>
+          <td><%= render_isVeg invite.isVeg %></td>
+          
+          <td><%= invite.updated_at.to_s(:short) %></td>
+          <td><%= render_category invite.category %></td>
+          <!--<td><%#= invite.ip %></td>-->
+          <!--
+          <td><%#= link_to 'Show', invite %></td>
+          <td><%#= link_to 'Edit', edit_invite_path(invite) %></td>
+          -->
+          <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+
+
+  <div style="padding-top:100px;"></div>
+  <h1><span class="text-success">Kaohsiung</span> Listing invites</h1>
+
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Zipcode</th>
+        <th>Address</th>
+        <th>Attendance</th>
+        <th>Location</th>
+        <th>Isveg</th>
+        <th>Time</th>
+        <th> Category </th>
+        <!--<th>Ip</th>-->
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invites_Kaohsiung.each_with_index do |invite, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= invite.name %></td>
+          <td><%= invite.email %></td>
+          <td><%= invite.phone %></td>
+          <td><%= invite.zipcode %></td>
+          <td><%= invite.address %></td>
+          <td><%= invite.company %></td>
+          <td><%= render_location invite.location %></td>
+          <td><%= render_isVeg invite.isVeg %></td>
+          <td><%= invite.updated_at.to_s(:short) %></td>
+          <td><%= render_category invite.category %></td>
+          <!--<td><%#= invite.ip %></td>-->
+          <!--
+          <td><%#= link_to 'Show', invite %></td>
+          <td><%#= link_to 'Edit', edit_invite_path(invite) %></td>
+          -->
+          <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>
+<%#= link_to 'New Invite', new_invite_path %>
