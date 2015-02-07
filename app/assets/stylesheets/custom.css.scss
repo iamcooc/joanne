@@ -2,6 +2,18 @@
 @import url("//fonts.googleapis.com/css?family=Playball");
 @import url("//fonts.googleapis.com/css?family=Arvo");
 
+@import url("//fonts.googleapis.com/css?family=Gloria+Hallelujah");
+
+
+.navbar .nav > li > a, .navbar .nav > li > a:first-letter,
+.navbar .nav > li.current-menu-item > a, 
+.navbar .nav > li.current-menu-ancestor > a {
+//display:        inline;
+//color:          red;                        
+font-family:     'Gloria Hallelujah', cursive;
+font-size:      1.2em;
+//padding:        5px 20px;
+}
 
 .ring {
     //text-align: center;
